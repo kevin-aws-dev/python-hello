@@ -11,8 +11,14 @@ def hello_world(request):
     if name == None or len(name) == 0:
         name = "world"
     message = "Hello, " + name + "!\n"
-    response = requests.get("http://169.254.169.254/latest/meta-data")
-    print(response)
+    instance_identity_url = "http://169.254.169.254/latest/dynamic/instance-identity/document"
+    session = requests.Session()
+    r = requests.get(instance_identity_url)
+    response_json = r.json()
+    region = response_json.get("region")
+    print(region)
+    # response = requests.get("http://169.254.169.254/latest/meta-data")
+    # print(response)
     return Response(message)
 
 if __name__ == '__main__':
