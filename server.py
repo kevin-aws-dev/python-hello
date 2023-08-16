@@ -2,6 +2,11 @@ from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
 import os
+import requests
+
+response = requests.get("http://169.254.169.254/latest/meta-data")
+print(r.text.split("\n"))
+
 
 def hello_world(request):
     name = os.environ.get('NAME')
