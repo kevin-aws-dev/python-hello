@@ -12,7 +12,7 @@ def hello_world(request):
         name = "world"
     message = "Hello, " + name + "!\n"
     response = requests.get("http://169.254.169.254/latest/meta-data")
-    print(r.text.split("\n"))
+    print(response)
     return Response(message)
 
 if __name__ == '__main__':
