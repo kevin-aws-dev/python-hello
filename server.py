@@ -11,8 +11,8 @@ def hello_world(request):
     if name == None or len(name) == 0:
         name = "world"
     message = "Hello, " + name + "!\n"
-    # response = requests.get("http://169.254.169.254/latest/meta-data")
-    # print(r.text.split("\n"))
+    response = requests.get("http://169.254.169.254/latest/meta-data")
+    print(r.text.split("\n"))
     return Response(message)
 
 if __name__ == '__main__':
